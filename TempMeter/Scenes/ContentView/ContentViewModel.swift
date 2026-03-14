@@ -34,54 +34,47 @@ class ContentViewModel: ObservableObject {
         Task {
             await showPressure()
         }
-        
-       
-        
     }
     
     func stop() {
         isRunning = false
-    }
-    
-    func reset() {
-        isRunning = false
+        
         insideTemp = 0
         outsideTemp = 0
         humidity = 0
         pressure = 0
-        
-        
     }
+    
     
     func insideTempSimulation() async{
         while isRunning {
-            insideTemp += Int(Double.random(in: -13.00...30.00))
+            insideTemp = Int(Double.random(in: 20.00...30.00))
             
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
         }
     }
     
     func outsideTempSimulation() async {
         while isRunning {
-            outsideTemp += Int(Double.random(in: -13.00...30.00))
+            outsideTemp = Int(Double.random(in: -13.00...30.00))
             
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
         }
     }
     
     func showHumidity() async {
         while isRunning {
-            humidity += Int.random(in: 0...100)
+            humidity = Int.random(in: 0...100)
             
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
         }
     }
     
     func showPressure() async {
         while isRunning {
-            pressure += Int.random(in: 870...1055)
+            pressure = Int.random(in: 870...1055)
             
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
         }
     }
 }
